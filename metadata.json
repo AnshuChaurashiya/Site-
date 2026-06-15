@@ -1,0 +1,6 @@
+{
+  "name": "ODE To Honour You",
+  "description": "An ultra-premium private annual membership and curated tactile gift experience for women who deserve to be celebrated.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

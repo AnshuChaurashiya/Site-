@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap');
+
+
+
+ 
+
+.font-imperial {
+  font-family: "Imperial", cursive;
+}
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-family: "Imperial Script", cursive;
+
+  /* Custom Sage Greens, Creams and Golds for ODE theme */
+  --color-sage-50: #f7f9f6;
+  --color-sage-100: #f1f4f0;
+  --color-sage-200: #e0e7df;
+  --color-sage-300: #c6d3c4;
+  --color-sage-400: #9cb19a;
+  --color-sage-500: #7b947a;
+  --color-sage-600: #5f785e;
+  --color-sage-700: #4a5e49;
+  --color-sage-800: #2c382b;
+  --color-sage-900: #20271f;
+  --color-sage-950: #121711;
+
+  --color-gold-50: #faf7f2;
+  --color-gold-100: #f1e9da;
+  --color-gold-200: #e5d7bd;
+  --color-gold-300: #d4bd94;
+  --color-gold-400: #bda169;
+  --color-gold-500: #a7874f;
+  --color-gold-600: #8c6e3d;
+  --color-gold-700: #715530;
+  --color-gold-800: #584126;
+  --color-gold-900: #3f2e1c;
+  
+  --color-cream-50: #fdfdfb;
+  --color-cream-100: #faf8f5;
+  --color-cream-200: #f3eee7;
+  --color-cream-300: #e8ded1;
+  --color-cream-400: #d8c9b5;
+  --color-cream-500: #beab92;
+--font-imperial: "Imperial Script", cursive;
+}
+
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 12px rgba(212, 189, 148, 0.2);
+  }
+}
+.log{
+    font-family: "Imperial Script", cursive;
+
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #faf8f5; /* Cream-100 */
+  color: #2c382b; /* Sage-800 */
+}
