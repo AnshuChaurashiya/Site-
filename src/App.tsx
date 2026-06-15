@@ -126,7 +126,7 @@ export default function App() {
         {/* Fullscreen Backdrop Image */}
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <img
-            src="/src/assets/images/ode_hero_banner_1781157355322.png"
+            src="https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_hero_banner_1781157355322_n1wgsz.png"
             alt="ODE Premium Packaging"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover transition-transform duration-1000 ease-out select-none"
@@ -253,7 +253,7 @@ PRIVATE CURATED CIRCLE
           <div ref={philosophyLeftRef} className="lg:col-span-5 grid grid-cols-12 gap-4">
             <div className="col-span-8 overflow-hidden rounded-2xl aspect-[4/3] border border-cream-300 shadow-sm stagger-vignette">
               <img
-                src="/src/assets/images/ode_peace_day_1781157387142.png"
+                src="https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_hero_banner_1781157355322_n1wgsz.png"
                 alt="Scented Candle and Ribbon"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
@@ -272,7 +272,7 @@ MEMBERS
   </div>
             <div className="col-span-12 overflow-hidden rounded-2xl aspect-[16/9] border border-cream-300 shadow-sm relative group stagger-vignette">
               <img
-                src="/src/assets/images/ode_hero_banner_1781157355322.png"
+                src="https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_peace_day_1781157387142_jjfw9g.jpg"
                 alt="Tactile Experience of Packaging"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover filter transition duration-500 brightness-95"
@@ -589,7 +589,7 @@ For years, my girlfriends and I sent flower photographs to each other regularly 
             >
               <div className="relative overflow-hidden rounded-2xl aspect-[4/3] border border-sage-800 bg-sage-800 shadow-xl">
                 <img
-                  src={EDITIONS[0].image}
+                  src="https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_womens_day_1781157374710_kemfpa.jpg"
                   alt={EDITIONS[0].title}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover filter brightness-95 opacity-90 transition-transform duration-700 group-hover:scale-103 group-hover:brightness-100"
@@ -626,7 +626,7 @@ For years, my girlfriends and I sent flower photographs to each other regularly 
             >
               <div className="relative overflow-hidden rounded-2xl aspect-[4/3] border border-sage-800 bg-sage-800 shadow-xl">
                 <img
-                  src={EDITIONS[1].image}
+                  src="https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_peace_day_1781157387142_jjfw9g.jpg"
                   alt={EDITIONS[1].title}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover filter brightness-95 opacity-90 transition-transform duration-700 group-hover:scale-103 group-hover:brightness-100"
@@ -678,7 +678,7 @@ For years, my girlfriends and I sent flower photographs to each other regularly 
             <div className="md:col-span-5 stagger-founder">
               <div  className=" overflow-hidden rounded-2xl border border-cream-300 shadow-sm relative group">
                 <img  
-                  src="/src/assets/images/Odefounder.jpeg"
+                  src="https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510557/Odefounder_ybhyt1.jpg"
                   alt="Founder ofLumina"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover  transition-transform duration-1000 group-hover:scale-105"
@@ -838,7 +838,7 @@ For years, my girlfriends and I sent flower photographs to each other regularly 
           
           <div className="lg:col-span-5 overflow-hidden rounded-[24px] aspect-[3/4] border border-sage-800/80 shadow-2xl relative">
             <img
-              src="/src/assets/images/odeBoxs.png"
+              src="https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510560/odeBoxs_mdzghh.png"
               alt="Deep restful nature sanctuary"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover filter brightness-90"
@@ -880,7 +880,7 @@ For years, my girlfriends and I sent flower photographs to each other regularly 
         {/* Parallax structure background */}
         <div className="absolute inset-0 bg-sage-900">
           <img
-            src="/src/assets/images/ode_hero_banner_1781157355322.png"
+            src="https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_hero_banner_1781157355322_n1wgsz.png"
             alt="ODE background texture"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover filter brightness-32 contrast-[1.05]"
@@ -927,7 +927,7 @@ INVITATION ONLY
           <div>
              <div className="flex flex-col items-center  md:w-fit justify-center">
           <img
-            src="/src/assets/images/OdeLogo.png"
+            src="https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510557/ODELOGO_wtwz1j.png"
             alt="ODE background texture"
             referrerPolicy="no-referrer"
             className="w-[60px]  ml-4 object-cover filter  contrast-[1.05]"

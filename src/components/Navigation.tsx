@@ -44,7 +44,7 @@ export default function Navigation({ onRequestAccess }: NavigationProps) {
           {/* Logo */}
           <a href="#" className="flex flex-col items-center  items-center justify-center group">
             <img
-            src="/src/assets/images/OdeLogo.png"
+            src="https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510557/ODELOGO_wtwz1j.png"
             alt="ODE background texture"
             referrerPolicy="no-referrer"
             className="w-[40px] ml-2  object-cover filter contrast-[1.05]"
