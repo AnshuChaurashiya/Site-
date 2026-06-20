@@ -40,7 +40,7 @@ export default function App() {
   const openApplication = () => setIsApplicationOpen(true);
 
   return (
-     <div ref={rootRef} className="relative min-h-screen bg-ink text-cream-100">
+     <div ref={rootRef} className="relative min-h-screen bg-ink2 text-cream-100">
       <div className="grain-overlay" aria-hidden />
       <ScrollProgress />
       <Navigation onRequestAccess={openApplication} />
@@ -55,8 +55,8 @@ export default function App() {
             className="w-full h-full object-cover scale-110"
           />
         </div>
-        <div className="hero-overlay absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink pointer-events-none" />
-        <div className="hero-overlay absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-ink/30 pointer-events-none" />
+        <div className="hero-overlay absolute inset-0 bg-gradient-to-b from-ink2/70 via-ink2/40 to-ink2 pointer-events-none" />
+        <div className="hero-overlay absolute inset-0 bg-gradient-to-r from-ink2/80 via-transparent to-ink2/30 pointer-events-none" />
 
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
           <p className="hero-outline-text m text-outline-gold opacity-30 translate-y-8">Lumina</p>
