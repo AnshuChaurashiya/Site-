@@ -36,7 +36,10 @@ export interface GalleryItem {
 export interface ApplicationInput {
   name: string;
   email: string;
+  phone: string;
+  country: string;
   instagram: string;
   reason: string;
   waxColor: 'gold' | 'sage' | 'burgundy';
+  selectedAesthetics?: string[];
 }

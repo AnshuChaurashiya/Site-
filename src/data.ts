@@ -8,7 +8,7 @@ export const EDITIONS: Edition[] = [
     theme: 'Confidence, Bravery, & Possibility',
     philosophy: 'A salute to the path you have walked and the peaks you are yet to conquer.',
     description: 'Every Spring, as the light reawakens, the Women\'s Day curation arrives to inspire courage and self-recognition. Specially selected elements unite to celebrate your strength, warmth, and the delicate intelligence unique to you.',
-    image: '/src/assets/images/ode_womens_day_1781157374710.png',
+    image: 'https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_womens_day_1781157374710_kemfpa.jpg',
     curatedItems: [
       {
         id: 'w1',
@@ -43,7 +43,7 @@ export const EDITIONS: Edition[] = [
     theme: 'Stillness, Restoration, & Presence',
     philosophy: 'An invitation to pause, breathe deep, and cross back into your own sanctuary.',
     description: 'As Autumn approaches and life moves indoors, the Peace Day curation shifts focus to restoration. It is built entirely around creating an exquisite shelter of sensory quietude and luxurious rest.',
-    image: '/src/assets/images/ode_peace_day_1781157387142.png',
+    image: 'https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_peace_day_1781157387142_jjfw9g.jpg',
     curatedItems: [
       {
         id: 'p1',
@@ -76,36 +76,36 @@ export const EDITIONS: Edition[] = [
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'gal-medallion',
-    image: '/src/assets/images/ode.png',
+    image: 'https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510560/odeBoxs_mdzghh.png',
     title: 'The Golden Crest Medallion',
     category: 'TACTILE TOKEN',
     description: 'An intricately detailed, heavy brass seal of honor, symbolizing a private pact between a woman and her inner strength.'
   },
   {
     id: 'gal-pouch',
-    image: '/src/assets/images/ode_silk_pouch_1781157475060.png',
+    image: 'https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_hero_banner_1781157355322_n1wgsz.png',
     title: 'The Ivory Velvet Drawstring Pouch',
     category: 'HERITAGE ACCESSORY',
     description: 'Handcrafted with golden thread and silk lining. Crafted to house your most valued keepsakes in sensory splendor.'
   },
   {
     id: 'gal-womens',
-    image: '/src/assets/images/odeBox.png',
+    image: 'https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_womens_day_1781157374710_kemfpa.jpg',
     title: 'Women’s Day Spring Gathering',
     category: 'SPRING EDITION',
     description: 'A vibrant yet serene flatlay of tulips, Earth Velvet perfume, and the signature gold reflective compact.'
   },
   {
     id: 'gal-peaceday',
-    image: '/src/assets/images/ode_peace_day_1781157387142.png',
+    image: 'https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_peace_day_1781157387142_jjfw9g.jpg',
     title: 'Peace Day Autumn Sanctuary',
     category: 'AUTUMN EDITION',
     description: 'Featuring the Solace candle and organic botanical packages, built to inspire tranquility when the nights draw in.'
   },
   {
     id: 'gal-hero',
-    image: '/src/assets/images/ode_hero_banner_1781157355322.png',
-    title: 'The Signature ODE Box Presentation',
+    image: 'https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510560/odeBoxs_mdzghh.png',
+    title: 'The Signature Lumina Box',
     category: 'UNBOXING RITUAL',
     description: 'Unveiling the cream linen envelope set with custom beeswax seal. Experience the calming pleasure of elegant materials.'
   }

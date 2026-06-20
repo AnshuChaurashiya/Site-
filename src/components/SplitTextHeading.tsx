@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 
 interface SplitTextHeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   children: string;
@@ -19,89 +21,54 @@ export default function SplitTextHeading({
   const animatedRef = useRef(false);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
     const el = headingRef.current;
-    if (!el) return;
-    if (animatedRef.current && triggerOnce) return;
+    if (!el || (animatedRef.current && triggerOnce)) return;
 
-    // Split text into characters in a clean, accessible manner
-    const originalText = children;
-    el.innerHTML = '';
-    
-    // Set viewport perspective for rich 3D rotating angles
-    el.style.perspective = '1000px';
+    const context = gsap.context(() => {
+      el.style.overflow = 'hidden';
+      el.style.perspective = '1000px';
+      el.style.willChange = 'transform';
+      el.innerHTML = children;
 
-    const words = originalText.split(' ');
-    words.forEach((word, wordIndex) => {
-      const wordSpan = document.createElement('span');
-      wordSpan.style.display = 'inline-block';
-      wordSpan.style.whiteSpace = 'nowrap';
-      wordSpan.style.marginRight = '0.3em'; // Clean natural space
-      wordSpan.style.verticalAlign = 'bottom';
-      
-      Array.from(word).forEach((char) => {
-        const charSpan = document.createElement('span');
-        charSpan.textContent = char;
-        charSpan.style.display = 'inline-block';
-        charSpan.style.transformOrigin = '50% 100%';
-        charSpan.className = 'gsap-char-reveal';
-        charSpan.style.opacity = '0';
-        wordSpan.appendChild(charSpan);
+      const split = SplitText.create(el, {
+        type: 'lines',
+        mask: 'lines',
+        linesClass: 'split-line',
+        autoSplit: true,
       });
 
-      el.appendChild(wordSpan);
+      gsap.set(split.lines, {
+        opacity: 0,
+        yPercent: 110,
+        transformPerspective: 1000,
+        transformOrigin: '50% 100%',
+      });
+
+      gsap.to(split.lines, {
+        opacity: 1,
+        yPercent: 0,
+        duration: 1.15,
+        ease: 'power3.out',
+        stagger: 0.08,
+        delay,
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          once: triggerOnce,
+          toggleActions: 'play none none none',
+        },
+        onComplete: () => {
+          if (triggerOnce) {
+            animatedRef.current = true;
+          }
+        },
+      });
     });
 
-    const chars = el.querySelectorAll('.gsap-char-reveal');
-
-    const triggerAnimation = () => {
-      gsap.fromTo(
-        chars,
-        {
-          opacity: 0,
-          y: 42,
-          rotateX: -75,
-          scaleY: 0.6,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          scaleY: 1,
-          stagger: 0.03,
-          ease: 'power4.out',
-          duration: 1.35,
-          delay: delay,
-          overwrite: 'auto',
-          onComplete: () => {
-            if (triggerOnce) {
-              animatedRef.current = true;
-            }
-          },
-        }
-      );
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !animatedRef.current) {
-            triggerAnimation();
-            if (triggerOnce) {
-              observer.unobserve(el);
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px',
-      }
-    );
-
-    observer.observe(el);
-
     return () => {
-      observer.disconnect();
+      context.revert();
     };
   }, [children, delay, triggerOnce]);
 

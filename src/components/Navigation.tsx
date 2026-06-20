@@ -1,130 +1,113 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { IMAGES } from '../constants/images';
+import { scrollToTarget } from '../lib/scrollEngine';
 
 interface NavigationProps {
   onRequestAccess: () => void;
 }
 
+const LINKS = [
+  { label: 'Philosophy', href: '#philosophy' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Membership', href: '#membership' },
+  { label: 'Editions', href: '#editions-horizontal' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Community', href: '#community' },
+];
+
 export default function Navigation({ onRequestAccess }: NavigationProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const menuItems = [
-    { label: 'PHILOSOPHY', href: '#philosophy' },
-    { label: 'MEMBERSHIP', href: '#membership' },
-    { label: 'COMMUNITY   ', href: '#Community' },
-    { label: 'Retreats', href: '#editions' },
-    { label: 'FAQs', href: '#gallery' },
-  ];
+  const navigate = (href: string) => {
+    setOpen(false);
+    scrollToTarget(href);
+  };
 
   return (
     <>
-      <nav
-        id="main-nav"
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${
-          isScrolled
-            ? 'bg-cream-100/90 backdrop-blur-md border-b border-cream-200/50 py-4 shadow-sm'
-            : 'bg-transparent py-6'
+      <header
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-700 ${
+          scrolled ? 'glass-dark py-4 shadow-[0_8px_32px_rgba(0,0,0,0.35)]' : 'bg-transparent py-7'
         }`}
       >
-        <div className="max-w-8xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex flex-col items-center  items-center justify-center group">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+          <a
+            href="#hero-pin"
+            onClick={(e) => { e.preventDefault(); scrollToTarget('#hero-pin'); }}
+            className="flex items-center gap-3 group"
+          >
             <img
-            src="https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510557/ODELOGO_wtwz1j.png"
-            alt="ODE background texture"
-            referrerPolicy="no-referrer"
-            className="w-[40px] ml-2  object-cover filter contrast-[1.05]"
-          />
-            <span className="log text-4xl  text-gold-400 transition-colors duration-300 group-hover:text-gold-500">
-              Lumina
-            </span>
-          
+              src={IMAGES.logo}
+              alt="Lumina"
+              referrerPolicy="no-referrer"
+              className="w-9 h-9 object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+            />
+            <div className="leading-none">
+              <span className="font-script text-3xl gold-gradient-text block pl-2">Lumina</span>
+              <span className="text-[8px] tracking-[0.4em] uppercase text-gold-500/70 font-sans">Celebrate You</span>
+            </div>
           </a>
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {menuItems.map((item) => (
-              <a
-                id={`nav-link-${item.label.toLowerCase().replace(/ /g, '-')}`}
+          <nav className="hidden xl:flex items-center gap-8">
+            {LINKS.map((item) => (
+              <button
                 key={item.label}
-                href={item.href}
-                className="font-medium text-xs uppercase tracking-[0.25em] text-gold-400 hover:text-gold-500 transition-colors duration-300"
+                type="button"
+                onClick={() => navigate(item.href)}
+                className="nav-link cursor-pointer text-[10px] tracking-[0.28em] uppercase text-cream-100/70 hover:text-gold-300 transition-colors font-medium"
               >
                 {item.label}
-              </a>
+              </button>
             ))}
-          </div>
+          </nav>
 
           <div className="hidden lg:block">
-            <button
-              id="nav-btn-request-access"
-              onClick={onRequestAccess}
-              className="px-6 py-4 text-black border border-gold-400/80 rounded-full text-sm font-sans tracking-[0.25em]   bg-gold-500 hover:text-white hover:border-gold-500 transition-all duration-500 font-medium"
-            >
-                 INVITE
+            <button type="button" onClick={onRequestAccess} className="btn-primary cursor-pointer">
+              Request Invitation
             </button>
           </div>
 
-          {/* Mobile Menu Trigger */}
           <button
-            id="mobile-menu-toggle"
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-1 text-gold-500 hover:text-gold-500 transition-colors duration-300"
-            aria-label="Toggle Menu"
+            type="button"
+            // onClick={() => setOpen(!open)}
+            className="xl:hidden p-2 text-gold-400"
+            aria-label="Menu"
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-      </nav>
+      </header>
 
-      {/* Mobile Drawer */}
       <AnimatePresence>
-        {isOpen && (
+        {open && (
           <motion.div
-            id="mobile-navigation-overlay"
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: 'easeInOut' }}
-            className="fixed inset-x-0 top-0 pt-24 pb-8 px-6 bg-cream-50 z-40 border-b border-cream-200/80 shadow-lg flex flex-col space-y-6 lg:hidden"
+            exit={{ opacity: 0, y: -16 }}
+            className="fixed inset-x-0 top-0 z-40 pt-28 pb-10 px-8 glass-dark border-b border-gold-400/10 xl:hidden"
           >
-            <div className="flex flex-col space-y-6 text-center">
-              {menuItems.map((item) => (
-                <a
-                  id={`mobile-nav-link-${item.label.toLowerCase().replace(/ /g, '-')}`}
+            <div className="flex flex-col gap-6 text-center">
+              {LINKS.map((item) => (
+                <button
                   key={item.label}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-sm font-sans font-medium tracking-[0.2em] text-sage-800 hover:text-gold-500 transition-colors duration-300 py-1"
+                  type="button"
+                  onClick={() => navigate(item.href)}
+                  className="text-sm tracking-[0.25em] uppercase text-cream-100/80 hover:text-gold-300"
                 >
                   {item.label}
-                </a>
+                </button>
               ))}
-            </div>
-            <div className="pt-4 border-t border-cream-200 flex justify-center">
-              <button
-                id="mobile-nav-btn-request-access"
-                onClick={() => {
-                  setIsOpen(false);
-                  onRequestAccess();
-                }}
-                className="w-full font-semibold  max-w-xs py-3 bg-sage-800 text-cream-100 hover:bg-gold-600 font-sans text-xs tracking-[0.25em] font-medium rounded-md transition-all duration-500"
-              >
-                REQUEST ACCESS
+              <button type="button" onClick={() => { setOpen(false); onRequestAccess(); }} className="btn-primary mx-auto mt-4">
+                Request Invitation
               </button>
             </div>
           </motion.div>

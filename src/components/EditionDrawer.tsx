@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { X, Sparkles, AlertCircle, Info, Heart } from 'lucide-react';
+import { X, Sparkles, Info, Heart } from 'lucide-react';
 import { Edition } from '../types';
 
 interface EditionDrawerProps {
@@ -13,89 +13,90 @@ export default function EditionDrawer({ edition, onClose, onRequestAccess }: Edi
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden flex items-end justify-center">
-      {/* Dark overlay backdrop */}
+      {/* Immersive backdrop */}
       <motion.div
         id="edition-drawer-backdrop"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="absolute inset-0 bg-sage-950/45 backdrop-blur-sm"
+        className="absolute inset-0 bg-sage-950/75 backdrop-blur-md"
       />
 
-      {/* Concrete sliding sheet */}
+      {/* Bottom sliding luxury sheet */}
       <motion.div
         id="edition-drawer-container"
         initial={{ y: '100%' }}
         animate={{ y: 0 }}
         exit={{ y: '100%' }}
-        transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-        className="relative w-full max-w-5xl bg-cream-100 rounded-t-3xl shadow-2xl p-6 md:p-10 border-t border-cream-200 overflow-y-auto max-h-[90vh] z-10"
+        transition={{ type: 'spring', damping: 30, stiffness: 180 }}
+        className="relative w-full max-w-5xl bg-cream-50 rounded-t-[36px] shadow-[0_-20px_60px_rgba(9,12,9,0.4)] p-6 md:p-12 border-t border-gold-300/40 overflow-y-auto max-h-[92vh] z-10 select-text"
       >
-        {/* Header decoration */}
-        <div className="flex items-center justify-between border-b border-cream-200 pb-5 mb-6">
+        {/* Header segment */}
+        <div className="flex items-center justify-between border-b border-cream-300/60 pb-6 mb-8">
           <div className="flex flex-col">
-            <span className="text-[10px] font-sans tracking-[0.3em] text-gold-500 font-semibold uppercase">
-              CURATED ARRIVAL
+            <span className="text-[10px] font-sans tracking-[0.35em] text-gold-500 font-bold uppercase">
+              ANNUAL SPECIFICATION
             </span>
-            <h3 className="font-serif text-2xl md:text-3xl tracking-tight text-sage-900 mt-1">
+            <h3 className="font-serif text-3xl md:text-4xl tracking-tight text-sage-950 mt-1">
               The {edition.title}
             </h3>
           </div>
           <button
             id="close-edition-drawer"
-            className="p-1.5 rounded-full hover:bg-cream-200 transition-colors duration-200 text-sage-700"
+            className="p-2.5 rounded-full hover:bg-cream-200 transition-colors duration-300 text-sage-800 cursor-pointer"
             onClick={onClose}
+            aria-label="Close"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
-        {/* Content body layout */}
+        {/* Curation specifications grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
-          {/* Images Section on the Left */}
-          <div className="lg:col-span-5 space-y-4">
-            <div className="relative overflow-hidden rounded-2xl bg-cream-200 aspect-[4/3] border border-cream-300 shadow-sm group">
+          {/* Visual Showcase (Left) */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="relative overflow-hidden rounded-[24px] bg-cream-200 aspect-[4/3] border border-cream-300/60 shadow-lg group">
               <img
                 src={edition.image}
                 alt={edition.title}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
               />
-              <div className="absolute top-4 left-4 py-1.5 px-3 rounded-full bg-cream-100/95 backdrop-blur-sm border border-gold-300/30 text-[9px] font-sans font-medium tracking-widest text-gold-600">
-                {edition.date} EDITION
+              <div className="absolute top-4 left-4 py-1.5 px-3.5 rounded-full bg-sage-950/90 border border-gold-400/20 text-[9px] font-sans font-bold tracking-widest text-gold-300 shadow">
+                {edition.date} DISPATCH
               </div>
             </div>
 
-            {/* Quote of the edition */}
-            <div className="p-5 rounded-2xl bg-sage-50 border border-sage-200/50 flex flex-col justify-between">
-              <span className="text-gold-500/80 mb-2">
+            {/* Inscription quote block */}
+            <div className="p-6 rounded-[20px] bg-sage-50 border border-gold-300/20 shadow-inner flex flex-col">
+              <span className="text-gold-500 mb-2">
                 <Sparkles size={16} />
               </span>
-              <p className="font-serif italic text-sage-800 text-[13px] leading-relaxed">
+              <p className="font-serif italic text-sage-900 text-sm leading-relaxed">
                 "{edition.philosophy}"
               </p>
             </div>
           </div>
 
-          {/* Details Section on the Right */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Details & Contents Deep Dive (Right) */}
+          <div className="lg:col-span-7 space-y-7">
             <div className="space-y-2">
-              <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-sage-500 font-semibold">
-                CURATION THEME
-              </h4>
-              <p className="font-serif italic text-xl md:text-2xl text-gold-600">
+              <span className="text-[10px] font-sans uppercase tracking-[0.25em] text-sage-500 font-bold block">
+                CURATOR THEME
+              </span>
+              <p className="font-serif italic text-xl md:text-2xl text-gold-600 leading-snug">
                 {edition.theme}
               </p>
-              <p className="text-xs text-sage-700 leading-relaxed font-light mt-3">
+              <p className="text-sm text-sage-700 leading-relaxed font-light mt-4">
                 {edition.description}
               </p>
             </div>
 
             {/* List and deep dive of what arrives */}
-            <div className="space-y-4 pt-4 border-t border-cream-200">
-              <h5 className="text-[10px] font-sans font-semibold uppercase tracking-[0.2em] text-sage-800">
-                WHAT ARRIVES AT YOUR DOOR:
+            <div className="space-y-4 pt-6 border-t border-cream-300/65">
+              <h5 className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-sage-900">
+                CURATED INCLUSIONS:
               </h5>
 
               <div className="space-y-4">
@@ -103,28 +104,28 @@ export default function EditionDrawer({ edition, onClose, onRequestAccess }: Edi
                   <div
                     key={item.id}
                     id={`curated-item-${item.id}`}
-                    className="p-4 rounded-xl bg-cream-50 hover:bg-cream-200/30 border border-cream-300/50 transition-all duration-300"
+                    className="p-5 rounded-xl bg-white border border-cream-200 shadow-sm hover:border-gold-300/50 hover:shadow transition-all duration-300"
                   >
-                    <div className="flex md:items-center justify-between flex-col md:flex-row gap-1">
-                      <span className="text-[10px] font-sans uppercase font-medium tracking-[0.16em] text-gold-500">
+                    <div className="flex md:items-center justify-between flex-col md:flex-row gap-1 border-b border-cream-100 pb-2 mb-2">
+                      <span className="text-[9.5px] font-sans uppercase font-bold tracking-[0.2em] text-gold-600">
                         {item.category}
                       </span>
-                      <span className="text-[9px] font-mono text-sage-500 tracking-tight">
+                      <span className="text-[10px] font-mono text-sage-400 font-medium tracking-tight">
                         {item.material}
                       </span>
                     </div>
-                    <h6 className="font-serif text-base tracking-normal text-sage-900 font-medium mt-1">
+                    <h6 className="font-serif text-lg tracking-normal text-sage-950 font-bold">
                       {item.title}
                     </h6>
-                    <p className="text-xs text-sage-700 leading-relaxed font-light mt-1.5">
+                    <p className="text-[12.5px] text-sage-700 leading-relaxed font-light mt-1.5">
                       {item.description}
                     </p>
 
-                    {/* Care Instructions / Notes */}
-                    <div className="mt-3 pt-2.5 border-t border-cream-200/50 flex items-start gap-1.5 text-[10px] text-sage-600">
-                      <Info size={12} className="text-gold-400 mt-0.5 shrink-0" />
-                      <p className="italic leading-snug">
-                        <strong className="not-italic font-normal text-sage-800">Ritual guidance:</strong> {item.careNote}
+                    {/* Care Instructions */}
+                    <div className="mt-3.5 pt-3 border-t border-cream-100 flex items-start gap-2 text-[10px] text-sage-600">
+                      <Info size={13} className="text-gold-500 mt-0.5 shrink-0" />
+                      <p className="italic leading-relaxed">
+                        <strong className="not-italic font-bold text-sage-800">Ritual Care:</strong> {item.careNote}
                       </p>
                     </div>
                   </div>
@@ -132,12 +133,12 @@ export default function EditionDrawer({ edition, onClose, onRequestAccess }: Edi
               </div>
             </div>
 
-            {/* Action Section */}
-            <div className="pt-6 border-t border-cream-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-2 text-sage-600">
-                <Heart size={14} className="text-gold-500" />
+            {/* Action panel */}
+            <div className="pt-6 border-t border-cream-300/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2.5 text-sage-600">
+                <Heart size={14} className="text-gold-500 shrink-0 animate-pulse" />
                 <span className="text-[11px] font-sans font-light tracking-wide">
-                  Limited to 40 annual memberships globally.
+                  Limited strictly to 400 active annual memberships globally.
                 </span>
               </div>
               <button
@@ -146,9 +147,9 @@ export default function EditionDrawer({ edition, onClose, onRequestAccess }: Edi
                   onClose();
                   onRequestAccess();
                 }}
-                className="w-full sm:w-auto px-8 py-3 bg-sage-800 text-cream-100 font-sans text-xs tracking-[0.2em] font-medium hover:bg-gold-500 transition-all duration-500 shadow-md"
+                className="w-full sm:w-auto px-8 py-3.5 bg-sage-900 text-cream-100 font-sans text-[10px] font-bold tracking-[0.25em] hover:bg-gold-500 hover:text-sage-950 transition-all duration-300 shadow-md cursor-pointer"
               >
-                APPLY FOR MEMBERSHIP
+                APPLY FOR INVITE
               </button>
             </div>
           </div>
