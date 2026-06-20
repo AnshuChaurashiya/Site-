@@ -268,7 +268,7 @@ export default function App() {
             <article
               key={edition.id}
               className="edition-panel  "
-              onClick={() => setSelectedEdition(edition)}
+              // onClick={() => setSelectedEdition(edition)}
               onKeyDown={(e) => e.key === 'Enter' && setSelectedEdition(edition)}
               role="button"
               tabIndex={0}
@@ -280,7 +280,7 @@ export default function App() {
                   referrerPolicy="no-referrer"
                   className="w-full h-[400px] object-cover  transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink2 via-ink2/20 to-transparent" />
                 <div className="absolute top-6 left-6 flex items-center gap-2 glass-light rounded-full px-4 py-2">
                   <Calendar size={12} className="text-gold-400" />
                   <span className="text-[9px] tracking-[0.3em] uppercase text-cream-100/80">{edition.date} Dispatch</span>
