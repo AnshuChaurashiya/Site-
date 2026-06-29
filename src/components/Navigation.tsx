@@ -6,9 +6,8 @@ import { scrollToTarget } from '../lib/scrollEngine';
 
 interface NavigationProps {
   onRequestAccess: () => void;
-}
-
-const LINKS = [
+} 
+ const LINKS = [
   { label: 'Philosophy', href: '#philosophy' },
   { label: 'Experience', href: '#experience' },
   { label: 'Membership', href: '#membership' },
