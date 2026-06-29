@@ -9,7 +9,7 @@ export const EDITIONS: Edition[] = [
     philosophy: 'A salute to the path you have walked and the peaks you are yet to conquer.',
     description: 'Every Spring, as the light reawakens, the Women\'s Day curation arrives to inspire courage and self-recognition. Specially selected elements unite to celebrate your strength, warmth, and the delicate intelligence unique to you.',
     image: 'https://res.cloudinary.com/dbqgnaqqa/image/upload/v1781510559/ode_womens_day_1781157374710_kemfpa.jpg',
-    curatedItems: [
+    curatedItems: [ 
       {
         id: 'w1',
         title: 'Earth Velvet Eau de Parfum',
